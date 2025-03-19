@@ -5,7 +5,7 @@ const {User}=require('./model/User');
 const mongoose = require('mongoose');
 const cors= require('cors');
 const morgan= require('morgan');
-const bcrypt= require('bcrypt');
+const bcrypt= require('bcryptjs');
 const jwt= require('jsonwebtoken');
 
 
@@ -17,8 +17,10 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 
+//CApordNUSeILpSrH
+let MONGODB_URL="mongodb+srv://sattiselina:CApordNUSeILpSrH@cluster0.g8n4g.mongodb.net/?retryWrites=true&w=majority"
 
-mongoose.connect('mongodb://127.0.0.1:27017/KLEProject')
+mongoose.connect(MONGODB_URL)
 .then(()=>
 {
     console.log("DB is connected")
@@ -60,7 +62,6 @@ app.post('/register',async(req,res)=>{
         res.status(500).json({message:"Inernal server Error"})
     }
 })
-
 
 //task-2 create a route for login user
 app.post('/login',async(req,res)=>{
